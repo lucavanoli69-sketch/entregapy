@@ -1,108 +1,65 @@
-# TuPrimeraPagina - Blog en Django
+# TuPrimeraPaginaVanoli
 
-Proyecto web desarrollado con Django como parte de un trabajo práctico.
-Incluye un blog simple con 3 modelos, formularios para cargar datos y búsqueda.
+Este proyecto es una página web hecha con Django para una entrega del curso.
+
+La idea fue armar un blog simple donde se pueden crear autores, categorías y posts, y también buscar posts por título.
 
 ---
 
-##  Cómo correr el proyecto
+## Cómo correr el proyecto
 
-### 1. Clonar o descargar el repositorio
+1. Clonar el repositorio:
+git clone https://github.com/lucavanoli69-sketch/entregapy.git
 
-```bash
-git clone https://github.com/TU_USUARIO/TuPrimeraPagina+Apellido.git
-cd TuPrimeraPagina
-```
+2. Entrar a la carpeta:
+cd TuPrimeraPaginaVanoli
 
-### 2. Instalar Django
-
-```bash
+3. Instalar Django (si no lo tenés):
 pip install django
-```
 
-### 3. Crear las tablas en la base de datos
-
-```bash
+4. Crear la base de datos:
 python manage.py makemigrations
 python manage.py migrate
-```
 
-### 4. Crear un superusuario (para acceder al admin)
-
-```bash
+5. Crear usuario admin:
 python manage.py createsuperuser
-```
 
-### 5. Correr el servidor
-
-```bash
+6. Levantar el servidor:
 python manage.py runserver
-```
 
-### 6. Abrir en el navegador
-
-```
+7. Abrir en el navegador:
 http://127.0.0.1:8000/
-```
 
 ---
 
-## 📋 Orden recomendado para probar las funcionalidades
+## Cómo probar la página
 
-1. **Crear un Autor** → http://127.0.0.1:8000/autor/crear/
-2. **Crear una Categoría** → http://127.0.0.1:8000/categoria/crear/
-3. **Crear un Post** → http://127.0.0.1:8000/post/crear/
-4. **Buscar un Post** → http://127.0.0.1:8000/post/buscar/
-5. **Ver todos los Posts** → http://127.0.0.1:8000/
-6. **Panel Admin** → http://127.0.0.1:8000/admin/
+El orden que usé para probar todo fue:
 
----
+1. Crear un autor  
+2. Crear una categoría  
+3. Crear un post  
+4. Buscar un post  
+5. Ver todo desde el inicio  
 
-## 🗂️ Estructura del proyecto
-
-```
-TuPrimeraPagina/
-│
-├── manage.py                   → Comando principal de Django
-├── TuPrimeraPagina/
-│   ├── settings.py             → Configuración del proyecto
-│   ├── urls.py                 → URLs principales
-│   └── wsgi.py / asgi.py
-│
-├── blog/
-│   ├── models.py               → Modelos: Autor, Categoria, Post
-│   ├── views.py                → Lógica de cada página
-│   ├── forms.py                → Formularios
-│   ├── urls.py                 → URLs de la app
-│   └── admin.py                → Registro en el admin
-│
-├── templates/
-│   ├── base.html               → Template base con navbar (herencia)
-│   ├── home.html               → Página de inicio
-│   └── blog/
-│       ├── crear_autor.html
-│       ├── crear_categoria.html
-│       ├── crear_post.html
-│       └── buscar.html
-│
-└── README.md
-```
+También se puede entrar al admin:
+http://127.0.0.1:8000/admin/
 
 ---
 
-## 📦 Modelos
+## Qué tiene el proyecto
 
-| Modelo     | Campos                              |
-|------------|-------------------------------------|
-| Autor      | nombre, email                       |
-| Categoria  | nombre, descripcion                 |
-| Post       | titulo, contenido, fecha, autor, categoria |
+- 3 modelos (Autor, Categoría y Post)  
+- Formularios para cargar datos  
+- Búsqueda de posts por título  
+- Templates con herencia (base.html)  
+- Estructura básica de Django con patrón MVT  
 
 ---
 
-## 🔧 Tecnologías usadas
+## Tecnologías
 
-- Python 3
-- Django 4+
-- SQLite (base de datos por defecto)
-- HTML + CSS (sin librerías externas)
+- Python  
+- Django  
+- SQLite  
+- HTML básico  
