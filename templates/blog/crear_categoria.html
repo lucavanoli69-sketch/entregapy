@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+<!-- Hereda la estructura base con navbar -->
+
+{% block titulo %}Crear Categoría{% endblock %}
+
+{% block contenido %}
+<div class="form-container">
+    <h1>🏷️ Crear Nueva Categoría</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn">Guardar Categoría</button>
+        <a href="{% url 'home' %}" class="btn" style="background:#888; margin-left:10px;">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+<!-- Este template hereda la estructura de base.html -->
+
+{% block titulo %}Inicio - Mi Blog{% endblock %}
+
+{% block contenido %}
+<h1>Bienvenido al Blog 📰</h1>
+
+<!-- Si hay posts, los mostramos. Si no, mostramos un mensaje -->
+{% if posts %}
+    {% for post in posts %}
+    <div class="post-card">
+        <h2>{{ post.titulo }}</h2>
+        <div class="meta">
+            <!-- Mostramos fecha, autor y categoría si existen -->
+            📅 {{ post.fecha|date:"d/m/Y H:i" }}
+            {% if post.autor %} | ✍️ {{ post.autor }}{% endif %}
+            {% if post.categoria %} | 🏷️ {{ post.categoria }}{% endif %}
+        </div>
+        <p>{{ post.contenido }}</p>
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="no-results">
+        <p>No hay posts todavía. ¡Creá el primero!</p>
+        <a href="{% url 'crear_post' %}" class="btn">Crear Post</a>
+    </div>
+{% endif %}
+
+{% endblock %}

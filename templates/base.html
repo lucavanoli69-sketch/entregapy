@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- El título puede ser personalizado en cada template hijo -->
+    <title>{% block titulo %}Mi Blog{% endblock %}</title>
+    
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Barra de navegación */
+        nav {
+            background-color: #2c3e50;
+            padding: 15px 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background-color: #3d5166;
+        }
+
+        nav .brand {
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Tarjetas de posts */
+        .post-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .post-card h2 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .post-card .meta {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        /* Formularios */
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .form-container p {
+            margin-bottom: 15px;
+        }
+
+        .form-container label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-container input,
+        .form-container textarea,
+        .form-container select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Botones */
+        .btn {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #3d5166;
+        }
+
+        /* Mensajes de sin resultados */
+        .no-results {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: #888;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación compartida por todos los templates -->
+    <nav>
+        <a href="{% url 'home' %}" class="brand">📝 Mi Blog</a>
+        <a href="{% url 'crear_autor' %}">Nuevo Autor</a>
+        <a href="{% url 'crear_categoria' %}">Nueva Categoría</a>
+        <a href="{% url 'crear_post' %}">Nuevo Post</a>
+        <a href="{% url 'buscar_post' %}">🔍 Buscar</a>
+    </nav>
+
+    <!-- Contenido principal - cada template hijo lo rellena -->
+    <div class="container">
+        {% block contenido %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>
