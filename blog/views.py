@@ -1,40 +1,32 @@
-"""
-Vistas del Blog
-Cada función maneja una URL y devuelve una respuesta HTML usando templates
-"""
+"""Vistas de la aplicación Blog"""
 
 from django.shortcuts import render, redirect
 from .models import Post, Autor, Categoria
 from .forms import PostForm, AutorForm, CategoriaForm, BuscarPostForm
 
 
-# Vista de inicio (HOME)
-# Muestra todos los posts existentes en la base de datos
+# Vista principal del blog
 def home(request):
-    posts = Post.objects.all()   # Obtenemos todos los posts
+    posts = Post.objects.all()
     return render(request, 'home.html', {'posts': posts})
 
 
 # ──────────────────────────────────────────────
-# VISTAS PARA CREAR DATOS
+# Vistas de creación (CRUD)
 # ──────────────────────────────────────────────
 
-# Vista para crear un nuevo Autor
 def crear_autor(request):
     if request.method == 'POST':
-        # Si el usuario envió el formulario, lo procesamos
         form = AutorForm(request.POST)
         if form.is_valid():
-            form.save()  # Guardamos el autor en la base de datos
-            return redirect('home')  # Redirigimos al inicio
+            form.save()
+            return redirect('home')
     else:
-        # Si es la primera vez que entra, mostramos el formulario vacío
         form = AutorForm()
     
     return render(request, 'blog/crear_autor.html', {'form': form})
 
 
-# Vista para crear una nueva Categoría
 def crear_categoria(request):
     if request.method == 'POST':
         form = CategoriaForm(request.POST)
@@ -47,7 +39,6 @@ def crear_categoria(request):
     return render(request, 'blog/crear_categoria.html', {'form': form})
 
 
-# Vista para crear un nuevo Post
 def crear_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -61,21 +52,17 @@ def crear_post(request):
 
 
 # ──────────────────────────────────────────────
-# VISTA DE BÚSQUEDA
+# Formulario de búsqueda
 # ──────────────────────────────────────────────
 
-# Vista para buscar posts por título
 def buscar_post(request):
     form = BuscarPostForm()
-    resultados = None   # Por defecto no hay resultados
+    resultados = None
 
     if request.method == 'POST':
         form = BuscarPostForm(request.POST)
         if form.is_valid():
-            # Obtenemos el texto ingresado por el usuario
             titulo_buscado = form.cleaned_data['titulo']
-            
-            # Buscamos posts cuyo título contenga el texto (sin importar mayúsculas)
             resultados = Post.objects.filter(titulo__icontains=titulo_buscado)
     
     return render(request, 'blog/buscar.html', {

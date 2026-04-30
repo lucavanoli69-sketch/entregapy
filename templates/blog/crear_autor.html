@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-<!-- Hereda la estructura base con navbar -->
 
 {% block titulo %}Crear Autor{% endblock %}
 
@@ -7,11 +6,8 @@
 <div class="form-container">
     <h1>✍️ Crear Nuevo Autor</h1>
 
-    <!-- Formulario que envía datos al mismo URL por POST -->
     <form method="post">
-        {% csrf_token %}  <!-- Token de seguridad obligatorio en Django -->
-        
-        <!-- Django renderiza los campos del formulario automáticamente -->
+        {% csrf_token %}
         {{ form.as_p }}
         
         <button type="submit" class="btn">Guardar Autor</button>

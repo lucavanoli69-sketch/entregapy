@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- El título puede ser personalizado en cada template hijo -->
     <title>{% block titulo %}Mi Blog{% endblock %}</title>
     
     <style>
@@ -146,7 +145,7 @@
 </head>
 <body>
 
-    <!-- Barra de navegación compartida por todos los templates -->
+    <!-- Barra de navegación principal -->
     <nav>
         <a href="{% url 'home' %}" class="brand">📝 Mi Blog</a>
         <a href="{% url 'crear_autor' %}">Nuevo Autor</a>
@@ -155,7 +154,7 @@
         <a href="{% url 'buscar_post' %}">🔍 Buscar</a>
     </nav>
 
-    <!-- Contenido principal - cada template hijo lo rellena -->
+    <!-- Contenedor principal -->
     <div class="container">
         {% block contenido %}
         {% endblock %}
